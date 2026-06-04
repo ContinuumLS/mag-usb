@@ -1,0 +1,19 @@
+services:
+  magnetometer:
+    build: .
+    container_name: psws-gmag
+    environment:
+      - DEVICE_PORT=1234
+      - WS_PORT=8765
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    network_mode: host
+    ports:
+      - "8765:8765"
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      # Persists edits to the config.toml file
+      - ./src/config.toml:/app/config.toml
+      - ./logs:/app/logs
