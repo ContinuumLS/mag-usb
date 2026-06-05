@@ -17,10 +17,7 @@ RUN cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_WEBSOCKET=ON && \
 FROM ubuntu:noble
 
 ## Port for the physical device
-ENV DEVICE_PORT=1234
-## Port for mag-usb broadcast
-ENV WS_PORT=8765
-EXPOSE ${WS_PORT}
+ENV HW_PORT=1234
 
 ## Install nano (to edit config.toml) and socat (virtual TTY)
 RUN apt-get update -q && \
